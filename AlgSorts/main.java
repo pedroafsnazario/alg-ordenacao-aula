@@ -14,7 +14,7 @@ public class main {
         Ordenacao bsort = new Ordenacao(bVetor);
         Ordenacao ssort = new Ordenacao(sVetor);
         Ordenacao csort = new Ordenacao(cVetor);
-        Ordenacao qsort = new Ordenacao(qVetor);
+        
 
         //Consideracoes O Insertion geralmente ~e considerado melhor que o selection e o bubble sort, para pequenos vetores e.ou vetores quase ordenados ele se sobressai
         //O Insertion sort é mais rapido na pratica, pois tem menos trocas e comparacoes, o unico problema dele e na atualizacao dos vetores mas de resto ele é bem rapido
@@ -32,8 +32,7 @@ public class main {
         System.out.println("\n\nCocktail Sort:");
         csort.cocktailSort(5, cVetor);
 
-        System.out.println("\n\n Quick Sort:");
-        qsort.quickSort(qVetor, 0, 4);
+        
         
     }
 }
@@ -175,54 +174,10 @@ class Ordenacao {
 
 
 
-    void quickSort(int[] vetor, int inicio, int fim){
-        //OTIMO PARA LISTAS GRANDES E DESORDENADAS
-        //E possivel tornar esse sort sequencial doq recursivo? e o Insertion? e possivel tornalo recursivo?
-        int trocas = 0;
-        int interacao = 0;
-
-        if(inicio < fim){
-            interacao++;
-            int posicaoPivo = separar(vetor, inicio, fim);
-            quickSort(vetor, inicio, posicaoPivo - 1);
-            quickSort(vetor, posicaoPivo + 1, fim);
-        }
-
-        System.out.println("Vetor Ordenado: " + Arrays.toString(vetor) + " Trocas feitas: " +  trocas + " Interações feitas: " + interacao );
-    }
-
-
-    int separar(int[] vetor, int inicio, int fim){
-        int pivo = vetor[inicio];
-        int i = inicio + 1;
-        int f = fim;
-        int trocas = 0;
-        while(i <= f){
-            while(i <= fim && vetor[i] <= pivo){
-                i = i + 1;
-            }
-            while(f > inicio && vetor[f] > pivo) {
-                f = f - 1;
-            }
-
-            if(i < f){
-                trocas++;
-                int troca = vetor[i];
-                vetor[i] = vetor[f];
-                vetor[f] = troca;
-                i = i + 1;
-                f = f - 1;
-            }
-        }
-        vetor[inicio] = vetor[f];
-        vetor[f] = pivo;
-        return f;
-    
-    }
-
     //bubble sort
     //bubble sort +
     //os 3 sorts do tde
     //quantas interacoes e trocas..
     //
 }
+
